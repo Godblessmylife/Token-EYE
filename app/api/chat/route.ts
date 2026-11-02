@@ -7,7 +7,7 @@ export async function POST(req: Request) {
 
     const openai = new OpenAI({
       apiKey:
-        "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",
+        "YOUR_API_KEY",
     })
 
     const response = await openai.chat.completions.create({
