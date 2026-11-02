@@ -1,0 +1,59 @@
+{
+  "name": "Token Eye - Blockchain Security Solutions",
+  "short_name": "Token Eye",
+  "description": "Leading provider of AI-powered blockchain security solutions. Protect your digital assets with advanced threat detection and compliance monitoring.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#7c3aed",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "lang": "en",
+  "categories": ["finance", "security", "blockchain"],
+  "icons": [
+    {
+      "src": "/icons/icon-48x48.jpg",
+      "sizes": "48x48",
+      "type": "image/jpeg",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icons/icon-72x72.jpg",
+      "sizes": "72x72",
+      "type": "image/jpeg",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icons/icon-96x96.jpg",
+      "sizes": "96x96",
+      "type": "image/jpeg",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icons/icon-144x144.jpg",
+      "sizes": "144x144",
+      "type": "image/jpeg",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icons/icon-192x192.jpg",
+      "sizes": "192x192",
+      "type": "image/jpeg",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icons/icon-512x512.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg",
+      "purpose": "any maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/icons/icon-512x512.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg",
+      "form_factor": "narrow"
+    }
+  ]
+}
