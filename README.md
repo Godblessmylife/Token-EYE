@@ -1,14 +1,17 @@
 # Token EYE
 
+![Token EYE home page](TOKEN-EYE.jpg)
+
 A web interface for checking the risk of blockchain wallets, tokens and transactions, with a built-in AI security assistant.
 
-> **Status: prototype.** Scan results are simulated. The app validates input and shows the full result flow, but it does not query blockchain data yet. Do not use it for compliance decisions.
+> **Status: prototype.** Token details (metadata, price, market cap, supply, holders) come from live APIs. Risk and trust factors, the scores built from them, and wallet and transaction scans are still simulated. Do not use the results for compliance decisions.
 
 ## Features
 
 - **Scan page:** check a wallet, token or transaction on 7 networks: Ethereum, BNB Smart Chain, Polygon, Avalanche, Arbitrum, Optimism and Cardano.
+- **Live token data:** for tokens on six EVM networks the app loads metadata and top holders from [Moralis](https://moralis.io/), and price, market cap, volume and supply from [CoinGecko](https://www.coingecko.com/).
 - **Input validation:** address and hash formats are checked per network before a scan starts.
-- **Risk and trust scoring:** each result has a risk score, a trust score and an overall level (low, medium, high) with the factors behind it.
+- **Risk and trust scoring:** each result has a risk score, a trust score and an overall level (low, medium, high) with the factors behind it (simulated for now).
 - **Rate limiting:** 10 scans per hour per client.
 - **AI security assistant:** streaming chat on the OpenAI API (`gpt-4o-mini`) for smart-contract security, AML and compliance questions. It answers in Russian or English, matching the user.
 - **Installable PWA:** web manifest and service worker.
@@ -24,8 +27,12 @@ flowchart LR
     S --> P[scan-data-provider]
     P --> V[Validation per network]
     P --> R[Rate limit 10 per hour]
-    P --> M[Scoring engine]
-    M --> C[Result card: risk, trust, factors]
+    P --> M[Scoring engine, simulated factors]
+    P --> T[real-api-provider]
+    T --> MO[Moralis: metadata, holders]
+    T --> CG[CoinGecko: price, market data]
+    M --> C[Result card]
+    T --> C
     A --> API[/api/chat route/]
     API --> O[OpenAI gpt-4o-mini]
     O -->|stream| A
@@ -38,14 +45,19 @@ sequenceDiagram
     participant U as User
     participant UI as Scan page
     participant P as scan-data-provider
+    participant X as Moralis and CoinGecko
     U->>UI: Enter wallet, token or transaction and network
     UI->>P: scanIdentifier(request)
     P->>P: Check rate limit
     P->>P: Validate format for the selected network
     P->>P: Build risk and trust factors (simulated)
     P->>P: Calculate scores and overall risk
+    alt request type is token
+        P->>X: Load metadata, holders, price and market data
+        X-->>P: Live token data
+    end
     P-->>UI: ScanResult
-    UI-->>U: Result card with scores and factors
+    UI-->>U: Result card with scores, factors and token details
 ```
 
 ## Scoring model
@@ -60,7 +72,7 @@ Risk factors add 30 (high), 20 (medium) or 10 (low) points, capped at 100. Trust
 
 ## Tech stack
 
-Next.js 14, React 18, TypeScript, Tailwind CSS, shadcn/ui, Radix UI, Framer Motion, Recharts, Zod, React Hook Form, OpenAI SDK.
+Next.js 14, React 18, TypeScript, Tailwind CSS, shadcn/ui, Radix UI, Framer Motion, Recharts, Zod, React Hook Form, OpenAI SDK, Moralis API, CoinGecko API.
 
 ## Getting started
 
@@ -71,13 +83,14 @@ pnpm dev
 
 Open `http://localhost:3000`.
 
-For the AI assistant, set your OpenAI API key in `app/api/chat/route.ts`. Never commit a real key to the repository. Moving it to an environment variable is on the roadmap.
+API keys (OpenAI, Moralis, CoinGecko) must be set in your own environment. Never commit real keys to the repository.
 
 ## Roadmap
 
-- Replace simulated results with real data: block explorer APIs, on-chain RPC and sanctions lists.
+- Replace simulated risk factors with real data: block explorer APIs, on-chain RPC and sanctions lists.
+- Add live wallet and transaction analysis.
+- Move all API calls to server-side routes and read keys from environment variables.
 - Server-side rate limiting.
-- Read the OpenAI key from an environment variable.
 - Add tests for validation and scoring.
 
 ## Author
