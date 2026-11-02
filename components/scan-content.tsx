@@ -139,29 +139,29 @@ export default function ScanContent() {
   }
 
   return (
-    <div className="container mx-auto px-6 py-12">
+    <div className="container mx-auto px-4 sm:px-6 py-8 sm:py-12">
       <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="max-w-4xl mx-auto">
-        <div className="flex items-center gap-4 mb-8">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 mb-6 sm:mb-8">
           <Button
             variant="ghost"
             onClick={() => {
               setShowScanner(false)
               analytics.trackButtonClick("back_to_overview", "scanner_page")
             }}
-            className="text-white hover:bg-white/10"
+            className="text-white hover:bg-white/10 w-full sm:w-auto"
           >
             <ArrowLeft className="w-4 h-4 mr-2" />
             Back to Overview
           </Button>
-          <div className="text-sm text-gray-400">
+          <div className="text-sm text-gray-400 w-full sm:w-auto text-center sm:text-left">
             Remaining scans: <span className="text-white font-medium">{remainingRequests}</span>
           </div>
         </div>
 
         {/* Header */}
-        <div className="text-center mb-12">
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">AML Security Scanner</h1>
-          <p className="text-xl text-gray-300 max-w-2xl mx-auto">
+        <div className="text-center mb-8 sm:mb-12">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-3 sm:mb-4">AML Security Scanner</h1>
+          <p className="text-lg sm:text-xl text-gray-300 max-w-2xl mx-auto px-4">
             Get instant risk assessment for wallets, tokens, and transactions across multiple blockchain networks
           </p>
         </div>
@@ -172,31 +172,31 @@ export default function ScanContent() {
             <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }}>
               <Alert className="mb-6 bg-red-500/10 border-red-500/20 text-red-400">
                 <AlertCircle className="h-4 w-4" />
-                <AlertDescription>{error}</AlertDescription>
+                <AlertDescription className="text-sm">{error}</AlertDescription>
               </Alert>
             </motion.div>
           )}
         </AnimatePresence>
 
         {/* Scan Form */}
-        <Card className="bg-black/50 backdrop-blur-sm border border-white/10 mb-8">
-          <CardHeader>
-            <CardTitle className="text-white flex items-center gap-2">
+        <Card className="bg-black/50 backdrop-blur-sm border border-white/10 mb-6 sm:mb-8">
+          <CardHeader className="pb-3 sm:pb-4">
+            <CardTitle className="text-white flex items-center gap-2 text-lg sm:text-xl">
               <Shield className="w-5 h-5" />
               Quick Security Scan
             </CardTitle>
           </CardHeader>
-          <CardContent className="space-y-6">
+          <CardContent className="space-y-4 sm:space-y-6">
             {/* Scan Type Tabs */}
             <Tabs value={scanType} onValueChange={handleScanTypeChange}>
-              <TabsList className="grid w-full grid-cols-3 bg-white/5">
-                <TabsTrigger value="wallet" className="text-white data-[state=active]:bg-purple-600">
+              <TabsList className="grid w-full grid-cols-3 bg-white/5 h-10 sm:h-11">
+                <TabsTrigger value="wallet" className="text-white data-[state=active]:bg-purple-600 text-sm">
                   Wallet
                 </TabsTrigger>
-                <TabsTrigger value="token" className="text-white data-[state=active]:bg-purple-600">
+                <TabsTrigger value="token" className="text-white data-[state=active]:bg-purple-600 text-sm">
                   Token
                 </TabsTrigger>
-                <TabsTrigger value="transaction" className="text-white data-[state=active]:bg-purple-600">
+                <TabsTrigger value="transaction" className="text-white data-[state=active]:bg-purple-600 text-sm">
                   Transaction
                 </TabsTrigger>
               </TabsList>
@@ -208,7 +208,7 @@ export default function ScanContent() {
               <select
                 value={blockchain}
                 onChange={(e) => handleBlockchainChange(e.target.value)}
-                className="w-full px-3 py-2 bg-white/5 border border-white/10 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-purple-500 [&>option]:bg-gray-800 [&>option]:text-white"
+                className="w-full px-3 py-2 sm:py-3 bg-white/5 border border-white/10 rounded-md text-white text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-purple-500 [&>option]:bg-gray-800 [&>option]:text-white"
               >
                 <option value="ethereum" className="bg-gray-800 text-white">
                   Ethereum (ETH)
@@ -241,7 +241,7 @@ export default function ScanContent() {
                 {scanType === "token" && "Token Contract Address"}
                 {scanType === "transaction" && "Transaction Hash"}
               </label>
-              <div className="flex gap-2">
+              <div className="flex flex-col sm:flex-row gap-2">
                 <Input
                   value={identifier}
                   onChange={(e) => setIdentifier(e.target.value)}
@@ -252,12 +252,12 @@ export default function ScanContent() {
                         ? "0xA0b86a33E6441E6C8D3c8C7C5b8C8C8C8C8C8C8C"
                         : "0x1234567890abcdef1234567890abcdef12345678"
                   }
-                  className="flex-1 bg-white/5 border-white/10 text-white placeholder:text-gray-500"
+                  className="flex-1 bg-white/5 border-white/10 text-white placeholder:text-gray-500 text-sm sm:text-base py-2 sm:py-3"
                 />
                 <Button
                   onClick={handleScan}
                   disabled={!identifier.trim() || isScanning || remainingRequests <= 0}
-                  className="bg-gradient-to-r from-red-600 to-orange-600 hover:from-red-700 hover:to-orange-700 text-white px-6"
+                  className="bg-gradient-to-r from-red-600 to-orange-600 hover:from-red-700 hover:to-orange-700 text-white px-4 sm:px-6 py-2 sm:py-3 w-full sm:w-auto"
                 >
                   {isScanning ? (
                     <>

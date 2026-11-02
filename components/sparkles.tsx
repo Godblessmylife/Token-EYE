@@ -145,3 +145,5 @@ export const SparklesCore = ({
     />
   )
 }
+
+export const Sparkles = SparklesCore

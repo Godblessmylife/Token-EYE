@@ -18,28 +18,32 @@ export default function ScanLanding({ onStartScan }: ScanLandingProps) {
       title: "Lightning Fast",
       description: "Get comprehensive risk assessment in under 4 seconds",
       stats: "< 4s response time",
-      image: "/assets/real-time-monitoring.png",
+      image:
+        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/20250817_1547_%D0%A1%D0%BA%D0%BE%D1%80%D0%BE%D1%81%D1%82%D0%BD%D0%B0%D1%8F%20%D0%BC%D0%BE%D0%BB%D0%BD%D0%B8%D1%8F%20%D0%B2%20%D0%BA%D0%BE%D1%81%D0%BC%D0%BE%D1%81%D0%B5_simple_compose_01k2vxn7j3fdj8wnrnmmbd3ee9%20%281%29-l0zpQBNRxWdDZDNO3YLtcOKvX4ufky.png",
     },
     {
       icon: <Shield className="w-8 h-8 text-blue-500" />,
       title: "Multi-Chain Support",
       description: "Scan across 7 major blockchains including ETH, BNB, Polygon",
       stats: "7 networks supported",
-      image: "/assets/multi-chain.png",
+      image:
+        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/20250817_1941_%D0%9F%D0%BE%D0%B4%D0%B4%D0%B5%D1%80%D0%B6%D0%BA%D0%B0%20%D0%9C%D1%83%D0%BB%D1%8C%D1%82%D0%B8-%D0%A6%D0%B5%D0%BF%D0%B5%D0%B9_simple_compose_01k2wb0my6fmxa4akawecjdpfn-e7tckqO7p3zcZvVYsZTDJ431OCrLLF.png",
     },
     {
       icon: <Eye className="w-8 h-8 text-purple-500" />,
       title: "Deep Analysis",
       description: "AI-powered risk scoring with explainable factors and sources",
       stats: "100+ risk indicators",
-      image: "/assets/risk-analysis.png",
+      image:
+        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/20250817_1947_%D0%90%D0%BD%D0%B0%D0%BB%D0%B8%D0%B7%20%D0%B2%D0%BE%20%D0%92%D1%81%D0%B5%D0%BB%D0%B5%D0%BD%D0%BD%D0%BE%D0%B9_simple_compose_01k2wban9hf6z9vs7gtf1fz72z-lELBhjf5JvG7lcmQBPPX0DbWz1bQGd.png",
     },
     {
       icon: <Users className="w-8 h-8 text-green-500" />,
       title: "Trusted by Professionals",
       description: "Used by exchanges, DeFi protocols, and compliance teams",
       stats: "10,000+ daily scans",
-      image: "/assets/trust-verification.png",
+      image:
+        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/20250817_2044_%D0%94%D0%BE%D0%B2%D0%B5%D1%80%D1%8F%D1%8E%D1%82%20%D0%BF%D1%80%D0%BE%D1%84%D0%B5%D1%81%D1%81%D0%B8%D0%BE%D0%BD%D0%B0%D0%BB%D1%8B%20%D0%B2%20%D0%BA%D0%BE%D1%81%D0%BC%D0%BE%D1%81%D0%B5_simple_compose_01k2wem0twfeqvwfaetg8m4ajf-QsYNAAAOG5CejFIDdOp1jVwk0qpWOh.png",
     },
   ]
 
@@ -75,15 +79,15 @@ export default function ScanLanding({ onStartScan }: ScanLandingProps) {
             Instant AML screening for wallets, tokens, and transactions. Get risk scores, trust levels, and detailed
             analysis across multiple blockchain networks in seconds.
           </p>
-          <div className="relative w-full max-w-4xl mx-auto mb-8 rounded-2xl overflow-hidden">
+          <div className="relative max-w-fit mx-auto mb-8 rounded-2xl overflow-hidden">
             <Image
-              src="/assets/blockchain-security.png"
-              alt="Blockchain Security Dashboard"
+              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/20250817_1540_%D0%A1%D0%BA%D0%B0%D0%BD%D0%B5%D1%80%20%D0%B1%D0%B5%D0%B7%D0%BE%D0%BF%D0%B0%D1%81%D0%BD%D0%BE%D1%81%D1%82%D0%B8%20%D0%B1%D0%BB%D0%BE%D0%BA%D1%87%D0%B5%D0%B9%D0%BD_simple_compose_01k2vx6p6tfe0sh271qwm4zsqr-8bpGRca7I6hdfNQJWlXWd42WrG3cQ9.png"
+              alt="Blockchain Security Scanner"
               width={800}
               height={400}
-              className="w-full h-64 md:h-80 object-cover"
+              className="h-64 md:h-80 object-contain bg-gradient-to-br from-blue-900/20 to-purple-900/20"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
           </div>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button
@@ -114,7 +118,7 @@ export default function ScanLanding({ onStartScan }: ScanLandingProps) {
           {valueBlocks.map((block, index) => (
             <Card
               key={index}
-              className="bg-black/50 backdrop-blur-sm border border-white/10 hover:border-white/20 transition-colors overflow-hidden group"
+              className="bg-black/10 border border-white/10 hover:border-white/20 transition-colors overflow-hidden group"
             >
               <div className="relative h-32 overflow-hidden">
                 <Image
@@ -122,9 +126,9 @@ export default function ScanLanding({ onStartScan }: ScanLandingProps) {
                   alt={block.title}
                   width={300}
                   height={128}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
                 <div className="absolute top-4 left-4">{block.icon}</div>
               </div>
               <CardContent className="p-6 text-center">
@@ -158,18 +162,18 @@ export default function ScanLanding({ onStartScan }: ScanLandingProps) {
                 </div>
               ))}
             </div>
-            <div className="mt-6 rounded-lg overflow-hidden">
+            <div className="mt-6 rounded-lg overflow-hidden max-w-fit mx-auto">
               <Image
-                src="/assets/aml-compliance.png"
-                alt="AML Compliance Interface"
+                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/20250817_2053_%D0%9A%D0%BE%D1%81%D0%BC%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B0%D1%8F%20%D0%90%D0%BD%D0%B0%D0%BB%D0%B8%D0%B7%20%D0%A0%D0%B8%D1%81%D0%BA%D0%BE%D0%B2_simple_compose_01k2wf4353ece81dxt7tk3b3zh-bteOVZ2KsSflrBKa9hm2viPHY8juua.png"
+                alt="Comprehensive Risk Analysis"
                 width={400}
                 height={250}
-                className="w-full h-48 object-cover"
+                className="h-48 object-contain bg-gradient-to-br from-blue-900/20 to-purple-900/20"
               />
             </div>
           </div>
 
-          <Card className="bg-black/50 backdrop-blur-sm border border-white/10">
+          <Card className="bg-black/10 border border-white/10">
             <CardHeader>
               <CardTitle className="text-white flex items-center gap-2">
                 <Clock className="w-5 h-5 text-blue-500" />
@@ -213,7 +217,7 @@ export default function ScanLanding({ onStartScan }: ScanLandingProps) {
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6 }}
-          className="text-center bg-gradient-to-r from-purple-900/20 to-blue-900/20 rounded-2xl p-8 border border-white/10"
+          className="text-center bg-gradient-to-r from-purple-900/10 to-blue-900/10 rounded-2xl p-8 border border-white/10"
         >
           <h2 className="text-3xl font-bold text-white mb-4">Ready to Secure Your Transactions?</h2>
           <p className="text-gray-300 mb-6 max-w-2xl mx-auto">

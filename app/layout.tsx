@@ -1,9 +1,22 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { GeistSans } from "geist/font/sans"
-import { GeistMono } from "geist/font/mono"
+import { Inter } from "next/font/google"
+import { Orbitron } from "next/font/google"
 import "./globals.css"
 import PWAInstallPrompt from "@/components/pwa-install-prompt"
+
+const inter = Inter({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-inter",
+})
+
+const orbitron = Orbitron({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-orbitron",
+  weight: ["400", "500", "600", "700", "800", "900"],
+})
 
 export const metadata: Metadata = {
   title: "Token Eye - Blockchain Security Solutions",
@@ -34,10 +47,11 @@ export const metadata: Metadata = {
     siteName: "Token Eye",
     images: [
       {
-        url: "/favicon.jpg",
+        url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Token Eye - Blockchain Security Solutions",
+        alt: "Token Eye - AI-Powered Blockchain Security Platform",
+        type: "image/png",
       },
     ],
   },
@@ -46,7 +60,7 @@ export const metadata: Metadata = {
     title: "Token Eye - Blockchain Security Solutions",
     description:
       "Leading provider of AI-powered blockchain security solutions. Protect your digital assets with advanced threat detection and compliance monitoring.",
-    images: ["/favicon.jpg"],
+    images: ["/og-image.jpg"],
     creator: "@tokeneye",
   },
   robots: {
@@ -74,13 +88,15 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${inter.variable} ${orbitron.variable}`}>
       <head>
         <style>{`
 html {
-  font-family: ${GeistSans.style.fontFamily};
-  --font-sans: ${GeistSans.variable};
-  --font-mono: ${GeistMono.variable};
+  font-family: 'Inter', sans-serif;
+  --font-sans: 'Inter', sans-serif;
+  --font-mono: 'Orbitron', monospace;
+  --font-inter: ${inter.variable};
+  --font-orbitron: ${orbitron.variable};
 }
         `}</style>
         <meta name="theme-color" content="#7c3aed" />
